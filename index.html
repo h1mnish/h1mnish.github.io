@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Family Tree</title>
   <style>
-    /* Overall Page Styling */
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, rgba(255, 204, 0, 0.8), rgba(255, 102, 102, 0.7)),
@@ -18,13 +17,11 @@
       animation: fadeIn 2s forwards;
     }
 
-    /* Fade-in animation */
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
 
-    /* Main Tree Container */
     .tree {
       display: flex;
       justify-content: center;
@@ -36,13 +33,11 @@
       z-index: 1;
     }
 
-    /* Tree Animation */
     @keyframes treeAnimation {
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
 
-    /* Family Member Styling */
     .member {
       background-color: rgba(255, 255, 255, 0.9);
       border: 2px solid #4caf50;
@@ -54,13 +49,11 @@
       color: #333;
     }
 
-    /* Hover effect for members */
     .member:hover {
       transform: scale(1.05);
       background-color: rgba(233, 253, 233, 0.8);
     }
 
-    /* Children container */
     .children {
       display: none;
       flex-direction: row;
@@ -69,7 +62,6 @@
       animation: fadeInChildren 0.5s forwards;
     }
 
-    /* Animation to reveal children */
     @keyframes fadeInChildren {
       0% { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -81,39 +73,21 @@
       background: #4caf50;
       margin: auto;
     }
-
   </style>
 </head>
 <body>
   <h1>My Family Tree</h1>
 
   <div class="tree">
-    <!-- Root Level: Husband & Wife -->
+    <!-- Root Level -->
     <div class="root">
       <div class="member" onclick="toggle('children1')">Jagmal Singh</div>
     </div>
 
-    <!-- Children of Father -->
+    <!-- Children of Jagmal Singh -->
     <div class="children" id="children1">
-      <div>
-        <div class="line"></div>
-        <div class="member" onclick="toggle('grandchildren1')">Adesh Kumar</div>
-        <div class="children" id="grandchildren1">
-          <div>
-            <div class="line"></div>
-            <div class="member">Himnish Tyagi (son)</div>
-          </div>
-          <div>
-            <div class="line"></div>
-            <div class="member">Nehal Tyagi (daughter)</div>
-          </div>
-          <div>
-            <div class="line"></div>
-            <div class="member">Priyanka Tyagi (wife)</div>
-          </div>
-        </div>
-      </div>
 
+      <!-- Rajesh Tyagi FIRST -->
       <div>
         <div class="line"></div>
         <div class="member" onclick="toggle('grandchildren2')">Rajesh Tyagi</div>
@@ -137,6 +111,27 @@
         </div>
       </div>
 
+      <!-- Adesh Kumar SECOND -->
+      <div>
+        <div class="line"></div>
+        <div class="member" onclick="toggle('grandchildren1')">Adesh Kumar</div>
+        <div class="children" id="grandchildren1">
+          <div>
+            <div class="line"></div>
+            <div class="member">Himnish Tyagi (son)</div>
+          </div>
+          <div>
+            <div class="line"></div>
+            <div class="member">Nehal Tyagi (daughter)</div>
+          </div>
+          <div>
+            <div class="line"></div>
+            <div class="member">Priyanka Tyagi (wife)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manoj Tyagi THIRD -->
       <div>
         <div class="line"></div>
         <div class="member" onclick="toggle('grandchildren3')">Manoj Tyagi</div>
@@ -156,6 +151,7 @@
         </div>
       </div>
 
+      <!-- Meeta Tyagi FOURTH -->
       <div>
         <div class="line"></div>
         <div class="member" onclick="toggle('grandchildren4')">Meeta Tyagi</div>
@@ -175,24 +171,18 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <script>
     function toggle(id) {
       const element = document.getElementById(id);
-      
       if (element.style.display === "flex") {
-        // Animation when closing
         element.style.animation = "fadeOutChildren 0.5s forwards";
-        
         setTimeout(() => {
           element.style.display = "none";
-          element.style.animation = ""; // Reset the animation
+          element.style.animation = "";
         }, 500);
-        
       } else {
-        // Show the element with animation
         element.style.display = "flex";
         element.style.animation = "fadeInChildren 0.5s forwards";
       }
@@ -200,4 +190,3 @@
   </script>
 </body>
 </html>
-
